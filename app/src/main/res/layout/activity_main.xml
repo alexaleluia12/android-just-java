@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingStart="24dp"
+        android:paddingLeft="24dp"
+        android:paddingTop="24dp"
+        android:paddingEnd="24dp"
+        tools:context=".MainActivity">
+
+        <EditText
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:hint="@string/name_placeholder" />
+
+        <TextView
+            style="@style/Heading"
+            android:text="@string/toppings" />
+
+        <CheckBox
+            android:id="@+id/cream_topping"
+            android:text="@string/whipped_cream"
+            style="@style/CheckBox" />
+
+        <CheckBox
+            android:id="@+id/chocolate_topping"
+            android:text="@string/chocolate"
+            style="@style/CheckBox" />
+
+        <TextView
+            style="@style/Heading"
+            android:text="@string/quantity" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/minus_button"
+                android:onClick="decrease"
+                android:text="@string/minus"
+                style="@style/QuantityButton" />
+
+            <TextView
+                android:id="@+id/quantity_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:text="@string/start_coffee_number"
+                android:textColor="@android:color/black"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/plus_button"
+                android:onClick="increase"
+                android:text="@string/plus"
+                style="@style/QuantityButton" />
+
+        </LinearLayout>
+
+        <TextView
+            style="@style/Heading"
+            android:text="@string/order_summary" />
+
+        <TextView
+            android:id="@+id/order_summary_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:textColor="@android:color/black"
+            android:textSize="18sp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="submitOrder"
+            android:text="@string/order" />
+    </LinearLayout>
+</ScrollView>

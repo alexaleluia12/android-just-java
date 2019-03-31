@@ -1,0 +1,44 @@
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!--App name. Used on Action Bar-->
+    <string name="app_name">Just Java</string>
+    <!--Legible value for boolean true-->
+    <string name="boolean_true">Yes</string>
+    <!--Legible value for boolean true-->
+    <string name="boolean_false">Not</string>
+    <!--Who is calling the order. Placeholder input, main scream -->
+    <string name="name_placeholder">Name</string>
+    <!--Title for toppings. Main scream-->
+    <string name="toppings">TOPPINGS</string>
+    <!--Topping type Whipped cream. Main scream -->
+    <string name="whipped_cream">Whipped cream</string>
+    <!--Topping type chocolate. Main scream-->
+    <string name="chocolate">Chocolate</string>
+    <!--Title for amount of coffee is in order. Main scream-->
+    <string name="quantity">QUANTITY</string>
+    <!--Value inside minus button. Not translate-->
+    <string name="minus">-</string>
+    <!--Star number of coffee. Not translate-->
+    <string name="start_coffee_number">0</string>
+    <!--Value inside plus button. Not translate-->
+    <string name="plus">+</string>
+    <!--Title for summary order-->
+    <string name="order_summary">Order Summary</string>
+    <!--Value used inside button that generate order-->
+    <string name="order">Order</string>
+    <!-- Name piece, output summary used inside the app and to then show on scream-->
+    <string name="order_summary_name_output">Name: <xliff:g id="name" example="Carlos" >%s</xliff:g></string>
+    <!--Whipped scream piece, output summary used inside the app and to then show on scream-->
+    <string name="order_summary_whipped_cream_output">Add whipped cream? <xliff:g id="whipped_cream" example="Yes" >%s</xliff:g></string>
+    <!--Chocolate piece, output summary used inside the app and to then show on scream-->
+    <string name="order_summary_chocolate_output">Add chocolate? <xliff:g id="chocolate" example="Yes" >%s</xliff:g></string>
+    <!--Quantity piece, output summary used inside the app and to then show on scream-->
+    <string name="order_summary_quantity_output">Quantity: <xliff:g id="quantity" example="2" >%s</xliff:g></string>
+    <!--Total price value, output summary used inside the app and to then show on scream-->
+    <string name="order_summary_total_output">Total: <xliff:g id="total" example="10$" >%s</xliff:g></string>
+    <!--Output summary order used inside app. Thank you message-->
+    <string name="order_summary_thank_you">Thank You!</string>
+    <!--Toast message when quantity is less then zero, rise after click on minus button-->
+    <string name="quantity_control_minus">Can\'t have less than <xliff:g id="minimum_quantity" example="0" >%s</xliff:g></string>
+    <!--Toast message when quantity is more than 100, rise after click on plus button-->
+    <string name="quantity_control_plus">Max is <xliff:g id="maximum_quantity" example="100" >%s</xliff:g></string>
+</resources>

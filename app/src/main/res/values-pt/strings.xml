@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">Apenas Java</string>
+    <string name="boolean_true">Sim</string>
+    <string name="boolean_false">Não</string>
+    <string name="name_placeholder">Nome</string>
+    <string name="toppings">Coberturas</string>
+    <string name="whipped_cream">Chantili</string>
+    <string name="chocolate">Chocolate</string>
+    <string name="quantity">Quantidade</string>
+    <string name="order_summary">Resumo do Pedido</string>
+    <string name="order">Pedir</string>
+    <string name="order_summary_name_output">Nome: <xliff:g id="name">%s</xliff:g></string>
+    <string name="order_summary_whipped_cream_output">Adicionar chantili? <xliff:g id="whipped_cream" example="No" >%s</xliff:g></string>
+    <string name="order_summary_chocolate_output">Adicionar chocolate? <xliff:g id="chocolate" example="Sí" >%s</xliff:g></string>
+    <string name="order_summary_quantity_output">Quantidade (<xliff:g id="quantity" example="2,0" >%s</xliff:g>)</string>
+    <string name="order_summary_total_output">Total: <xliff:g id="total" example="$10" >%s</xliff:g></string>
+    <string name="order_summary_thank_you">Obrigado</string>
+    <string name="quantity_control_minus"><xliff:g id="minimum_quantity" example="1" >%s</xliff:g> é o valor mínimo</string>
+    <string name="quantity_control_plus">Máximo <xliff:g id="maximum_quantity" example="100" >%s</xliff:g></string>
+</resources>
