@@ -19,15 +19,15 @@ What I am learn:
 ![app-print](img/app.jpeg)
 
 ## Internationalization
-En (Default)
-![en-1](img/en1.jpeg)
-
-![en-2](img/en1.jpeg)
+### En (Default)
+|Input                 |  Output               |
+|----------------------|-----------------------|
+|![en-1](img/en1.jpeg) | ![en-2](img/en2.jpeg) |
 
 ----
 
-Pt (Portuguese)
-![pt-1](img/pt1.jpeg)
-
-![pt-2](img/pt1.jpeg)
+### Pt (Portuguese)
+|Input                 |  Output               |
+|----------------------|-----------------------|
+|![pt-1](img/pt1.jpeg) | ![pt-2](img/pt2.jpeg) |
 
