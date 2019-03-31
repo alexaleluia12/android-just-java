@@ -1,6 +1,8 @@
 package com.example.android.justjava;
 
 
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -36,7 +38,15 @@ public class MainActivity extends AppCompatActivity {
         String nameMakeOrder = name.getText().toString();
 
         String summary = createOrderSummary(mquantity, hasCream, hasChocolate, nameMakeOrder);
-        displayOrder(summary);
+        Email email = new Email();
+        email.setAddress("coffeshop@gmail.com");
+        email.setSubject("Order for " + nameMakeOrder);
+        email.setBody(summary);
+
+        boolean hasEmailIntentHandler = sendEmailIntent(email);
+        if (!hasEmailIntentHandler) {
+            displayOrder(summary);
+        }
     }
 
     public void increase(View view) {
@@ -93,6 +103,22 @@ public class MainActivity extends AppCompatActivity {
                 .getIdentifier(resourceName, "string", getPackageName());
 
         return getString(resourceId);
+    }
+
+    private boolean sendEmailIntent(Email email) {
+        // how to send email intent: https://developer.android.com/guide/components/intents-common#Email
+        Intent intent = new Intent(Intent.ACTION_SENDTO);
+        // only email apps should handle this
+        intent.setData(Uri.parse("mailto:"));
+        intent.putExtra(Intent.EXTRA_EMAIL, new String[] { email.getAddress() });
+        intent.putExtra(Intent.EXTRA_SUBJECT, email.getSubject());
+        intent.putExtra(Intent.EXTRA_TEXT, email.getBody());
+
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+            return true;
+        }
+        return false;
     }
 
     // Todo(Alex) pass Java Beans Order to avoid to many arguments
