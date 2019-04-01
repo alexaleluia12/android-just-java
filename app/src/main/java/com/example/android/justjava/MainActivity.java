@@ -15,9 +15,7 @@ import java.text.NumberFormat;
 
 public class MainActivity extends AppCompatActivity {
 
-    // TODO(Alex) add intent on other branch
     // TODO(Alex) add automated test on other branch
-    // Todo(Alex) fix ide hint ""+0 to Number.format ...
     // TODO(Alex) initialize with value on resource
     int mquantity = 0;
 
@@ -28,19 +26,32 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    public void submitOrder(View view) {
+    private Order createOrder() {
+        Order order = new Order();
+
         CheckBox creamTopping =  findViewById(R.id.cream_topping);
         CheckBox chocolateTopping = findViewById(R.id.chocolate_topping);
         boolean hasCream = creamTopping.isChecked();
         boolean hasChocolate = chocolateTopping.isChecked();
 
         EditText name = findViewById(R.id.name);
-        String nameMakeOrder = name.getText().toString();
+        String orderOwner = name.getText().toString();
 
-        String summary = createOrderSummary(mquantity, hasCream, hasChocolate, nameMakeOrder);
+        order.setHasChocolate(hasChocolate);
+        order.setHasCream(hasCream);
+        order.setOwnerName(orderOwner);
+        order.setQuantity(mquantity);
+
+        return order;
+    }
+
+    public void submitOrder(View view) {
+        Order order = createOrder();
+
+        String summary = createOrderSummary(order);
         Email email = new Email();
         email.setAddress("coffeshop@gmail.com");
-        email.setSubject("Order for " + nameMakeOrder);
+        email.setSubject("Order for " + order.getOwnerName());
         email.setBody(summary);
 
         boolean hasEmailIntentHandler = sendEmailIntent(email);
@@ -72,23 +83,24 @@ public class MainActivity extends AppCompatActivity {
         display(mquantity);
     }
 
-    private int calculatePrice(boolean hasCream, boolean hasChocolate) {
+    private int calculatePrice(Order order) {
         int basePrice = 5;
         // +1 cream
-        if (hasCream) {
+        if (order.isCream()) {
             basePrice += 1;
         }
         // +2 chocolate
-        if (hasChocolate) {
+        if (order.isChocolate()) {
             basePrice += 2;
         }
 
-        return mquantity * basePrice;
+        return order.getQuantity() * basePrice;
     }
 
     private void display(int number) {
         TextView quantityTextView = findViewById(R.id.quantity_text_view);
-        quantityTextView.setText("" + number);
+        NumberFormat intFormat = NumberFormat.getNumberInstance();
+        quantityTextView.setText(intFormat.format(number));
     }
 
     private void displayOrder(String summaryOrder) {
@@ -121,20 +133,19 @@ public class MainActivity extends AppCompatActivity {
         return false;
     }
 
-    // Todo(Alex) pass Java Beans Order to avoid to many arguments
-    private String createOrderSummary(int quantity, boolean creamTopping, boolean chocolateTopping, String nameMakeOrder) {
+    private String createOrderSummary(Order order) {
         NumberFormat currencyFormat = NumberFormat.getCurrencyInstance();
         NumberFormat intFormat = NumberFormat.getNumberInstance();
 
-        int price = calculatePrice(creamTopping, chocolateTopping);
+        int price = calculatePrice(order);
 
         String legiblePrice = currencyFormat.format(price);
-        String legibleHasCreamTopping = transformBoolResource(creamTopping);
-        String legibleHasChocolate = transformBoolResource(chocolateTopping);
-        String legibleQuantity = intFormat.format(quantity);
+        String legibleHasCreamTopping = transformBoolResource(order.isCream());
+        String legibleHasChocolate = transformBoolResource(order.isChocolate());
+        String legibleQuantity = intFormat.format(order.getQuantity());
 
         StringBuffer template = new StringBuffer();
-        template.append(getString(R.string.order_summary_name_output, nameMakeOrder)).append("\n")
+        template.append(getString(R.string.order_summary_name_output, order.getOwnerName())).append("\n")
                 .append(getString(R.string.order_summary_whipped_cream_output, legibleHasCreamTopping)).append("\n")
                 .append(getString(R.string.order_summary_chocolate_output, legibleHasChocolate)).append("\n")
                 .append(getString(R.string.order_summary_quantity_output, legibleQuantity)).append("\n")

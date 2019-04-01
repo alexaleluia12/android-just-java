@@ -14,6 +14,8 @@ What I am learn:
     - Check box input
     - Text input
     - Button input
+    - Intent
+        if a intent can't be handle it will crash the app
 ```
 
 ![app-print](img/app.jpeg)
